@@ -11,5 +11,10 @@
   const openModal=e=>{e.preventDefault();modal.classList.add('is-open');document.body.classList.add('modal-open');setTimeout(()=>modal.querySelector('input')?.focus(),80)};document.querySelectorAll('a[href*="wa.me"]').forEach(btn=>btn.addEventListener('click',openModal));
   modal.addEventListener('click',e=>{if(e.target.closest('[data-close]')){modal.classList.remove('is-open');document.body.classList.remove('modal-open')}});
   modal.querySelector('#projectForm')?.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.currentTarget);const msg=`Hi Velcora Media, I'd like to start a website project.\n\nName: ${d.get('name')}\nEmail: ${d.get('email')}\nCategory: ${d.get('category')}\nBudget: ${d.get('budget')||'Not specified'}\nProject details: ${d.get('details')||'Not specified'}`;window.open(`https://wa.me/919769772615?text=${encodeURIComponent(msg)}`,'_blank','noopener');modal.classList.remove('is-open');document.body.classList.remove('modal-open')});document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('is-open');document.body.classList.remove('modal-open')}});
+  // Category cards: open the complete category-specific showcase instead of jumping to contact.
+  const demos=['demos/shopify-store.html','demos/dropshipping.html','demos/personal-brand.html','demos/fashion-clothing.html','demos/business.html','demos/saas-ai.html','demos/landing-page.html','demos/creative-portfolio.html'];
+  document.querySelectorAll('.category-card').forEach((card,i)=>{if(demos[i])card.setAttribute('href',demos[i])});
+  // The old multi-image reference gallery is intentionally hidden; category cards are now the portfolio entry point.
+  document.querySelector('#work')?.remove();
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.style.scrollBehavior='auto';document.querySelectorAll('*').forEach(el=>{el.style.animationDuration='.001ms';el.style.transitionDuration='.001ms'})}
 })();
