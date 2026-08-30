@@ -1,0 +1,16 @@
+/* Velcora portfolio visual layer — curated premium concept imagery */
+.project-image{isolation:isolate;background:#111!important}
+.project-image:before{content:"";position:absolute;inset:-3%;z-index:0;background-position:center;background-size:cover;background-repeat:no-repeat;transition:transform 1.1s cubic-bezier(.2,.75,.2,1),filter .8s ease;filter:saturate(.82) contrast(1.03)}
+.project-image:hover:before{transform:scale(1.075);filter:saturate(1) contrast(1.05)}
+.image-fashion:before{background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85')}
+.image-jewelry:before{background-image:url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=85')}
+.image-restaurant:before{background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=85')}
+.image-tech:before{background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=85')}
+.image-auto:before{background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=85')}
+.image-architecture:before{background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85')}
+.project-image:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.02) 40%,rgba(0,0,0,.76) 100%);pointer-events:none}
+.project-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(115deg,rgba(0,0,0,.35),transparent 50%,rgba(0,0,0,.2));pointer-events:none}
+.project-ui,.project-center-copy{z-index:3}
+.project-center-copy{position:absolute;left:28px;bottom:34px;font-family:Manrope,sans-serif;font-size:clamp(30px,4vw,62px);font-weight:700;line-height:.9;letter-spacing:-.055em;color:#fff;text-shadow:0 10px 30px rgba(0,0,0,.25)}
+.project-center-copy em{font-family:Georgia,serif;font-weight:400;color:#e5e2dc}
+@media(max-width:520px){.project-center-copy{left:20px;bottom:24px;font-size:34px}.project-ui{inset:18px;font-size:7px}}
