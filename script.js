@@ -2,8 +2,41 @@ const nav = document.getElementById('nav');
 const dot = document.querySelector('.cursor-dot');
 const ring = document.querySelector('.cursor-ring');
 
+// Velcora lamp entrance — visual gate, not real authentication.
+const gate = document.getElementById('loginGate');
+const cordHit = document.querySelector('.cord-hit');
+const loginForm = document.getElementById('velcoraLoginForm');
+
+function switchLamp(on) {
+  if (!gate) return;
+  gate.dataset.on = String(on);
+  gate.setAttribute('aria-hidden', on ? 'false' : 'true');
+}
+
+if (gate) {
+  switchLamp(false);
+  // The entrance opens when the user pulls the lamp cord.
+  cordHit?.addEventListener('click', () => switchLamp(!('true' === gate.dataset.on)));
+  cordHit?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      switchLamp(!('true' === gate.dataset.on));
+    }
+  });
+
+  // Also allow the lamp shade itself to be tapped on touch devices.
+  document.querySelector('.lamp-shade')?.addEventListener('click', () => switchLamp(!('true' === gate.dataset.on)));
+
+  loginForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    gate.classList.add('is-opening');
+    document.body.classList.remove('login-locked');
+    window.setTimeout(() => gate.remove(), 950);
+  });
+}
+
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 30);
+  nav?.classList.toggle('scrolled', window.scrollY > 30);
 });
 
 const observer = new IntersectionObserver((entries) => {
@@ -26,9 +59,7 @@ if (window.matchMedia('(pointer:fine)').matches) {
   window.addEventListener('pointermove', (e) => {
     mx = e.clientX;
     my = e.clientY;
-    if (dot) {
-      dot.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
-    }
+    if (dot) dot.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
   });
 
   const loop = () => {
@@ -51,9 +82,7 @@ if (window.matchMedia('(pointer:fine)').matches) {
       const y = (e.clientY - r.top - r.height / 2) * 0.16;
       el.style.transform = `translate(${x}px, ${y}px)`;
     });
-    el.addEventListener('pointerleave', () => {
-      el.style.transform = '';
-    });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
   });
 }
 
@@ -67,9 +96,7 @@ if (art && v3d && window.matchMedia('(pointer:fine)').matches) {
     v3d.style.animationPlayState = 'paused';
     v3d.style.transform = `rotateX(${18 - py * 12}deg) rotateY(${-24 + px * 18}deg) rotateZ(-7deg) translateY(${py * -12}px)`;
   });
-  art.addEventListener('pointerleave', () => {
-    v3d.style.animationPlayState = 'running';
-  });
+  art.addEventListener('pointerleave', () => { v3d.style.animationPlayState = 'running'; });
 }
 
 const menu = document.querySelector('.menu');
@@ -82,12 +109,9 @@ if (menu) {
 }
 
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener('click', () => {
-    if (navLinks) navLinks.classList.remove('open');
-  });
+  a.addEventListener('click', () => { if (navLinks) navLinks.classList.remove('open'); });
 });
 
-// Respect reduced-motion preferences.
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.documentElement.style.scrollBehavior = 'auto';
   document.querySelectorAll('*').forEach((el) => {
