@@ -1,11 +1,46 @@
+// Velcora Media — premium lamp entrance
+(() => {
+  const gateMarkup = `
+    <section class="login-gate" id="loginGate" data-on="false" aria-label="Velcora Media entrance">
+      <div class="login-shell">
+        <div class="login-brand"><span class="login-brand-mark">V</span><span>VELCORA MEDIA</span></div>
+        <div class="login-kicker">Digital studio · Worldwide</div>
+        <div class="lamp-scene" aria-label="Interactive lamp">
+          <div class="lamp-light"></div>
+          <svg class="lamp-svg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse class="inner-glow" cx="100" cy="110" rx="60" ry="30" />
+            <rect class="lamp-base" x="92" y="100" width="16" height="160" rx="8" />
+            <rect class="lamp-base" x="60" y="250" width="80" height="12" rx="6" />
+            <g class="pull-cord">
+              <line class="cord-line" x1="130" y1="110" x2="130" y2="180" />
+              <circle class="cord-bead" cx="130" cy="190" r="6" />
+              <circle class="cord-hit" cx="130" cy="190" r="25" fill="transparent" tabindex="0" role="button" aria-label="Pull the lamp cord" />
+            </g>
+            <path class="lamp-shade" d="M30 110 C 30 50, 170 50, 170 110 C 170 125, 30 125, 30 110 Z" />
+          </svg>
+        </div>
+        <form class="login-form" id="velcoraLoginForm">
+          <h1>Welcome.</h1>
+          <p class="sub">Pull the cord, then step inside the Velcora experience.</p>
+          <div class="form-row"><label for="velcoraName">Name</label><input id="velcoraName" type="text" placeholder="Your name" autocomplete="name" required></div>
+          <div class="form-row"><label for="velcoraEmail">Email</label><input id="velcoraEmail" type="email" placeholder="you@company.com" autocomplete="email" required></div>
+          <button class="login-submit" type="submit">Enter Velcora <span>↗</span></button>
+          <p class="login-hint">No account required · <span>Portfolio preview</span></p>
+        </form>
+        <div class="login-footer"><span>US · UK · Canada · Australia · Europe</span><span>Premium digital experiences</span></div>
+      </div>
+    </section>`;
+  document.body.insertAdjacentHTML('afterbegin', gateMarkup);
+})();
+
+const gate = document.getElementById('loginGate');
+const cordHit = document.querySelector('.cord-hit');
+const loginForm = document.getElementById('velcoraLoginForm');
 const nav = document.getElementById('nav');
 const dot = document.querySelector('.cursor-dot');
 const ring = document.querySelector('.cursor-ring');
 
-// Velcora lamp entrance — visual gate, not real authentication.
-const gate = document.getElementById('loginGate');
-const cordHit = document.querySelector('.cord-hit');
-const loginForm = document.getElementById('velcoraLoginForm');
+document.body.classList.add('login-locked');
 
 function switchLamp(on) {
   if (!gate) return;
@@ -15,20 +50,21 @@ function switchLamp(on) {
 
 if (gate) {
   switchLamp(false);
-  // The entrance opens when the user pulls the lamp cord.
-  cordHit?.addEventListener('click', () => switchLamp(!('true' === gate.dataset.on)));
+  cordHit?.addEventListener('click', () => switchLamp(gate.dataset.on !== 'true'));
   cordHit?.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      switchLamp(!('true' === gate.dataset.on));
+      switchLamp(gate.dataset.on !== 'true');
     }
   });
-
-  // Also allow the lamp shade itself to be tapped on touch devices.
-  document.querySelector('.lamp-shade')?.addEventListener('click', () => switchLamp(!('true' === gate.dataset.on)));
+  document.querySelector('.lamp-shade')?.addEventListener('click', () => switchLamp(gate.dataset.on !== 'true'));
 
   loginForm?.addEventListener('submit', (event) => {
     event.preventDefault();
+    if (gate.dataset.on !== 'true') {
+      switchLamp(true);
+      return;
+    }
     gate.classList.add('is-opening');
     document.body.classList.remove('login-locked');
     window.setTimeout(() => gate.remove(), 950);
@@ -51,36 +87,26 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
 if (window.matchMedia('(pointer:fine)').matches) {
-  let mx = window.innerWidth / 2;
-  let my = window.innerHeight / 2;
-  let rx = mx;
-  let ry = my;
-
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let rx = mx, ry = my;
   window.addEventListener('pointermove', (e) => {
-    mx = e.clientX;
-    my = e.clientY;
+    mx = e.clientX; my = e.clientY;
     if (dot) dot.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
   });
-
   const loop = () => {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
     if (ring) ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
     requestAnimationFrame(loop);
   };
   loop();
-
   document.querySelectorAll('a, button').forEach((el) => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
   });
-
   document.querySelectorAll('.magnetic').forEach((el) => {
     el.addEventListener('pointermove', (e) => {
       const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left - r.width / 2) * 0.16;
-      const y = (e.clientY - r.top - r.height / 2) * 0.16;
-      el.style.transform = `translate(${x}px, ${y}px)`;
+      el.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.16}px, ${(e.clientY-r.top-r.height/2)*.16}px)`;
     });
     el.addEventListener('pointerleave', () => { el.style.transform = ''; });
   });
@@ -91,10 +117,9 @@ const v3d = document.querySelector('.v-3d');
 if (art && v3d && window.matchMedia('(pointer:fine)').matches) {
   art.addEventListener('pointermove', (e) => {
     const r = art.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width - 0.5;
-    const py = (e.clientY - r.top) / r.height - 0.5;
+    const px = (e.clientX-r.left)/r.width-.5, py = (e.clientY-r.top)/r.height-.5;
     v3d.style.animationPlayState = 'paused';
-    v3d.style.transform = `rotateX(${18 - py * 12}deg) rotateY(${-24 + px * 18}deg) rotateZ(-7deg) translateY(${py * -12}px)`;
+    v3d.style.transform = `rotateX(${18-py*12}deg) rotateY(${-24+px*18}deg) rotateZ(-7deg) translateY(${py*-12}px)`;
   });
   art.addEventListener('pointerleave', () => { v3d.style.animationPlayState = 'running'; });
 }
