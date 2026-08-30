@@ -1,153 +1,59 @@
-/* Velcora Media — mobile-first refinement layer */
-@media (max-width: 900px) {
-  html { width: 100%; overflow-x: hidden; }
-  body { width: 100%; min-width: 0; overflow-x: hidden; }
-  .section-pad { padding-left: 20px; padding-right: 20px; }
-
-  .nav {
-    height: 68px;
-    padding: 0 20px;
-  }
-  .nav.scrolled { height: 62px; }
-  .brand { gap: 9px; }
-  .brand-mark { width: 31px; height: 31px; font-size: 13px; }
-  .brand-word { font-size: 12px; }
-  .brand-word > span { font-size: 8px; margin-left: 4px; }
-  .menu { position: relative; z-index: 31; padding: 10px 0 10px 10px; cursor: pointer; }
-  .menu span { transition: transform .3s ease, opacity .3s ease; }
-  .menu[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
-  .menu[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
-  .nav-links {
-    position: fixed;
-    inset: 68px 0 auto 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding: 10px 20px 24px;
-    background: rgba(7,7,7,.97);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid #222;
-    transform: translateY(-130%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform .35s ease, opacity .35s ease;
-  }
-  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-  .nav-links a { padding: 18px 0; border-bottom: 1px solid #1d1d1d; font-size: 14px; color: #ddd; }
-  .nav-links a:last-child { border-bottom: 0; }
-
-  .hero {
-    min-height: 820px;
-    display: block;
-    padding-top: 120px;
-    padding-bottom: 70px;
-  }
-  .hero-copy { width: 100%; padding-top: 0; }
-  .eyebrow, .section-kicker { font-size: 9px; letter-spacing: .13em; }
-  h1 {
-    font-size: clamp(48px, 15vw, 78px);
-    line-height: .91;
-    letter-spacing: -.07em;
-    margin: 20px 0 24px;
-  }
-  .hero-lede { font-size: 15px; line-height: 1.55; max-width: 100%; }
-  .hero-actions { align-items: flex-start; flex-direction: column; gap: 18px; margin-top: 30px; }
-  .button { width: 100%; justify-content: space-between; padding: 16px 18px; }
-  .text-link { font-size: 12px; }
-  .hero-art {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: 100%;
-    height: 300px;
-    margin-top: 30px;
-    opacity: .7;
-  }
-  .v-3d { width: 250px; height: 250px; }
-  .v-3d span { font-size: 205px; }
-  .orb-back { width: 72%; height: 72%; }
-  .art-label { right: 3%; bottom: 0; gap: 16px; font-size: 8px; }
-  .hero-bottom { left: 20px; right: 20px; bottom: 20px; gap: 12px; font-size: 8px; }
-  .hero-bottom span:last-child { display: none; }
-
-  .ticker { padding: 17px 0; }
-  .ticker-track { gap: 18px; font-size: 10px; }
-
-  .intro { padding-top: 100px; padding-bottom: 110px; }
-  .intro-grid { margin-top: 28px; gap: 35px; }
-  .intro h2, .section-head h2, .services h2, .process h2 {
-    font-size: clamp(42px, 12vw, 62px);
-    line-height: .94;
-  }
-  .large-copy { font-size: 22px; margin: 0 0 24px; }
-  .muted { font-size: 14px; }
-
-  .work { padding-bottom: 110px; }
-  .section-head { display: block; margin-bottom: 45px; }
-  .section-head > p { margin-top: 25px; max-width: 100%; font-size: 12px; }
-  .projects { display: block; }
-  .project { margin-bottom: 52px; }
-  .project-image,
-  .project-large .project-image,
-  .project-wide .project-image { height: 360px; }
-  .project-ui { inset: 15px; font-size: 8px; }
-  .jewel { font-size: 125px; }
-  .project-meta { display: block; padding-top: 14px; }
-  .project-meta h3 { font-size: 24px; }
-  .project-meta p { font-size: 11px; }
-  .project-meta > a { display: inline-block; margin-top: 16px; font-size: 11px; }
-
-  .statement { padding-top: 110px; padding-bottom: 120px; }
-  .statement-line { margin-bottom: 45px; }
-  .statement h2 { font-size: clamp(52px, 15vw, 78px); margin: 18px 0 40px; }
-  .statement-foot { flex-direction: column; gap: 10px; font-size: 8px; }
-
-  .services { padding-bottom: 110px; }
-  .services-head, .process-grid { display: block; margin: 28px 0 55px; }
-  .services-head p, .process-grid p { margin-top: 25px; font-size: 13px; }
-  .service { grid-template-columns: 34px 1fr 20px; gap: 12px; padding: 23px 0; }
-  .service h3 { font-size: 18px; }
-  .service p { grid-column: 2 / 3; font-size: 11px; margin: 0; }
-  .service b { grid-column: 3; grid-row: 1; }
-
-  .process { padding-bottom: 110px; }
-  .steps { display: block; }
-  .step, .step:not(:first-child) { min-height: 0; padding: 22px 0; border-right: 0; border-bottom: 1px solid #242424; }
-  .step h3 { font-size: 24px; margin: 28px 0 10px; }
-  .step p { max-width: 100%; font-size: 12px; margin: 0; }
-
-  .about { padding-bottom: 110px; }
-  .about-card { min-height: 0; display: block; }
-  .about-symbol { height: 260px; font-size: 250px; transform: translateY(20px); }
-  .about-copy { padding: 45px 25px 55px; }
-  .about-copy h2 { font-size: clamp(45px, 12vw, 64px); margin: 25px 0; }
-  .about-copy p { font-size: 15px; }
-
-  .contact { padding-top: 100px; padding-bottom: 75px; }
-  .contact-top, .contact-details { flex-direction: column; gap: 12px; font-size: 8px; }
-  .contact-main { display: block; padding: 55px 0 65px; }
-  .contact-main h2 { font-size: clamp(55px, 15vw, 80px); }
-  .contact-button { width: 145px; height: 145px; margin-top: 38px; font-size: 10px; }
-
-  .footer { padding-top: 35px; padding-bottom: 28px; }
-  .footer-brand { align-items: flex-start; flex-wrap: wrap; gap: 10px; }
-  .footer-brand p { width: 100%; margin: 5px 0 0; font-size: 10px; }
-  .footer-links { gap: 20px; flex-wrap: wrap; margin: 32px 0; }
-  .footer-bottom { flex-direction: column; gap: 12px; line-height: 1.4; }
+/* Velcora Media — mobile polish */
+@media (max-width:900px){
+  body{overflow-x:hidden}
+  .nav{padding:0 5vw}
+  .brand-word{font-size:12px}
+  .hero{overflow:hidden}
+  .hero h1{font-size:clamp(48px,12vw,82px)}
+  .hero-lede{max-width:92%;font-size:15px}
+  .hero-art{pointer-events:none}
+  .project-image img{transform:none}
+  .project-image:hover img{transform:none}
+  .contact-sub{max-width:92%}
 }
-
-@media (max-width: 420px) {
-  .section-pad { padding-left: 16px; padding-right: 16px; }
-  .nav { padding: 0 16px; }
-  .hero { min-height: 780px; }
-  h1 { font-size: 47px; }
-  .hero-art { height: 260px; }
-  .v-3d { width: 220px; height: 220px; }
-  .v-3d span { font-size: 180px; }
-  .project-image, .project-large .project-image, .project-wide .project-image { height: 315px; }
-  .about-symbol { height: 225px; font-size: 215px; }
+@media (max-width:600px){
+  .nav{height:70px}
+  .nav.scrolled{height:64px}
+  .brand-mark{width:31px;height:31px}
+  .hero{min-height:780px;padding-top:105px}
+  .hero h1{font-size:clamp(46px,14vw,68px);margin-top:20px}
+  .hero-proof{max-width:300px}
+  .hero-art{top:48%;right:-30%;width:112vw;height:40vh}
+  .hero-image{opacity:.35}
+  .v-3d{width:58vw;height:58vw}
+  .hero-bottom{display:none}
+  .ticker-track{font-size:10px;gap:18px}
+  .intro-grid,.manifesto-grid,.services-head,.process-grid{gap:30px}
+  .section-head{display:block;margin-bottom:48px}
+  .section-head>p{margin-top:25px}
+  .project-image,.project-large .project-image{height:390px}
+  .project-wide .project-image{height:300px}
+  .project-meta{display:block}
+  .project-meta>a{display:inline-block;margin-top:18px}
+  .service{grid-template-columns:38px 1fr 20px}
+  .service h3{font-size:19px}
+  .service p{font-size:11px}
+  .cap-grid{grid-template-columns:1fr}
+  .cap-grid>div,.cap-grid>div:nth-child(n){padding:22px 0;border-right:0;border-top:1px solid #252525;min-height:auto}
+  .steps{grid-template-columns:1fr}
+  .step,.step:not(:first-child){border-right:0;border-top:1px solid #242424;padding:25px 0;min-height:auto}
+  .about-symbol{height:205px;font-size:205px}
+  .about-copy{padding:48px 7vw 58px}
+  .about-copy h2{font-size:clamp(48px,13vw,62px)}
+  .about-copy p{font-size:15px}
+  .about-meta{gap:10px}
+  .faq-item summary{font-size:16px;gap:20px}
+  .faq-item p{font-size:12px;padding-right:10px}
+  .contact-main{padding:55px 0}
+  .contact-main h2{font-size:clamp(52px,14vw,70px)}
+  .contact-button{width:132px;height:132px;flex-basis:132px}
+  .contact-details{font-size:8px}
+  .footer-links{gap:16px}
+  .footer-bottom{line-height:1.6}
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-links, .menu span { transition: none; }
+@media (max-width:380px){
+  .hero h1{font-size:44px}
+  .hero-art{top:52%}
+  .project-image,.project-large .project-image{height:330px}
+  .project-wide .project-image{height:260px}
 }
