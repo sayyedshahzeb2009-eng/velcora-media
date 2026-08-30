@@ -1,16 +1,27 @@
-/* Velcora portfolio visual layer — curated premium concept imagery */
-.project-image{isolation:isolate;background:#111!important}
-.project-image:before{content:"";position:absolute;inset:-3%;z-index:0;background-position:center;background-size:cover;background-repeat:no-repeat;transition:transform 1.1s cubic-bezier(.2,.75,.2,1),filter .8s ease;filter:saturate(.82) contrast(1.03)}
-.project-image:hover:before{transform:scale(1.075);filter:saturate(1) contrast(1.05)}
-.image-fashion:before{background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85')}
-.image-jewelry:before{background-image:url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=85')}
-.image-restaurant:before{background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=85')}
-.image-tech:before{background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=85')}
-.image-auto:before{background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=85')}
-.image-architecture:before{background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85')}
-.project-image:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.02) 40%,rgba(0,0,0,.76) 100%);pointer-events:none}
-.project-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(115deg,rgba(0,0,0,.35),transparent 50%,rgba(0,0,0,.2));pointer-events:none}
-.project-ui,.project-center-copy{z-index:3}
-.project-center-copy{position:absolute;left:28px;bottom:34px;font-family:Manrope,sans-serif;font-size:clamp(30px,4vw,62px);font-weight:700;line-height:.9;letter-spacing:-.055em;color:#fff;text-shadow:0 10px 30px rgba(0,0,0,.25)}
-.project-center-copy em{font-family:Georgia,serif;font-weight:400;color:#e5e2dc}
-@media(max-width:520px){.project-center-copy{left:20px;bottom:24px;font-size:34px}.project-ui{inset:18px;font-size:7px}}
+/* Velcora premium visual system — Apple-inspired restraint, original brand direction */
+:root{--paper:#f5f5f7;--ink:#1d1d1f;--soft:#6e6e73;--line:rgba(29,29,31,.12);--accent:#0071e3}
+body{background:var(--paper);color:var(--ink)}
+.noise{opacity:.018}
+.nav{background:rgba(245,245,247,.78);border-bottom:1px solid var(--line);backdrop-filter:saturate(180%) blur(24px)}
+.nav.scrolled{background:rgba(245,245,247,.92)}
+.brand{color:var(--ink)}.brand-mark{border-color:rgba(29,29,31,.24)}.nav-links{color:#6e6e73}.nav-links a:hover{color:#1d1d1f}.nav-cta{border-color:rgba(29,29,31,.2)}
+.hero{background:radial-gradient(circle at 75% 38%,rgba(0,113,227,.10),transparent 28%),linear-gradient(180deg,#f5f5f7 0%,#fff 100%)}
+.eyebrow,.section-kicker{color:#6e6e73}.pulse{background:#1d1d1f;box-shadow:0 0 0 6px rgba(29,29,31,.06)}
+h1,h2,h3{color:#1d1d1f}em{color:#6e6e73}.hero-lede{color:#6e6e73}.button-light{background:#1d1d1f;color:#fff}.text-link{color:#1d1d1f;border-color:#b5b5b5}
+.hero-art{perspective:1400px}.hero-image{opacity:.78;border-color:rgba(29,29,31,.10);filter:saturate(.8);box-shadow:0 35px 80px rgba(0,0,0,.12)}.hero-image-shade{background:linear-gradient(120deg,rgba(245,245,247,.88),rgba(245,245,247,.05),rgba(245,245,247,.5))}
+.v-3d{animation:float 7s ease-in-out infinite;filter:drop-shadow(0 35px 45px rgba(0,0,0,.18))}.v-3d span{color:#f5f5f7;text-shadow:2px 2px 0 #c7c7c7,5px 5px 0 #9a9a9a,-2px -2px 0 #fff}.v-3d:before{border-color:rgba(29,29,31,.16)}.v-3d:after{border-color:rgba(29,29,31,.08)}.orb{border-color:rgba(29,29,31,.10)}.orb-back{background:radial-gradient(circle at 35% 30%,rgba(0,113,227,.13),transparent 30%,rgba(29,29,31,.025) 62%,transparent 72%)}.orb-front{background:rgba(0,113,227,.05);box-shadow:0 0 70px rgba(0,113,227,.10)}.art-label{color:#777}.hero-bottom{color:#777}.hero-bottom .line{background:#d2d2d7}
+.ticker{background:#fff;border-color:#e5e5e7}.ticker-track{color:#1d1d1f}.ticker i{color:#8e8e93}
+.intro,.work,.services,.process,.about,.faq{background:#f5f5f7}.intro h2 span,.section-head h2 span,.services h2 span,.process h2 span,.about-copy h2 span{color:#6e6e73}.large-copy{color:#1d1d1f}.muted,.section-head>p,.services-head p,.process-grid p{color:#6e6e73}
+.project-image{border-color:rgba(29,29,31,.10);box-shadow:0 18px 45px rgba(0,0,0,.06)}.project-meta span,.project-meta p{color:#6e6e73}.project-meta>a{color:#1d1d1f}.project-meta h3{color:#1d1d1f}
+.statement{background:#fff}.statement-line,.service,.step,.steps,.cap-grid,.faq-wrap{border-color:#d2d2d7}.statement-foot{color:#6e6e73}
+.service:hover{background:linear-gradient(90deg,rgba(0,113,227,.045),transparent)}.service h3,.service p,.service b,.step h3,.step p{color:#1d1d1f}.service p,.step p{color:#6e6e73}.service>span,.step>span{color:#8e8e93}
+.about-card{background:#1d1d1f;color:#fff;box-shadow:0 30px 80px rgba(0,0,0,.12)}.about-symbol{color:#f5f5f7}.about-copy .section-kicker{color:#a1a1a6}.about-copy h2,.about-copy p{color:#fff}.about-copy h2 span{color:#a1a1a6}.about-copy .muted{color:#a1a1a6}
+.faq-item summary{color:#1d1d1f}.faq-item summary span{color:#6e6e73}.faq-item p{color:#6e6e73}
+.contact{background:#fff;border-color:#e5e5e7}.contact-top,.contact-details{color:#6e6e73}.contact-sub{color:#6e6e73}.contact-button{background:#1d1d1f;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.footer{background:#f5f5f7;border-color:#d2d2d7}.footer-brand strong{color:#1d1d1f}.footer-brand p,.footer-links,.footer-bottom{color:#6e6e73}.footer-links a:hover{color:#1d1d1f}
+/* Premium portfolio imagery */
+.project-image{isolation:isolate;background:#111!important}.project-image:before{content:"";position:absolute;inset:-3%;z-index:0;background-position:center;background-size:cover;background-repeat:no-repeat;transition:transform 1.1s cubic-bezier(.2,.75,.2,1),filter .8s ease;filter:saturate(.82) contrast(1.03)}.project-image:hover:before{transform:scale(1.075);filter:saturate(1) contrast(1.05)}
+.image-fashion:before{background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85')}.image-jewelry:before{background-image:url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=85')}.image-restaurant:before{background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=85')}.image-tech:before{background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=85')}.image-auto:before{background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=85')}.image-architecture:before{background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85')}.project-image:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.02) 40%,rgba(0,0,0,.72));pointer-events:none}.project-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(115deg,rgba(0,0,0,.28),transparent 50%,rgba(0,0,0,.14));pointer-events:none}.project-ui,.project-center-copy{z-index:3}.project-center-copy{position:absolute;left:28px;bottom:34px;font-family:Manrope,sans-serif;font-size:clamp(30px,4vw,62px);font-weight:700;line-height:.9;letter-spacing:-.055em;color:#fff;text-shadow:0 10px 30px rgba(0,0,0,.25)}.project-center-copy em{font-family:Georgia,serif;font-weight:400;color:#e5e2dc}
+/* Apple-like calm motion, not a copy */
+@media (prefers-reduced-motion:no-preference){.hero-art{animation:heroDrift 10s ease-in-out infinite alternate}.hero-image{animation:imageFloat 12s ease-in-out infinite alternate}}@keyframes heroDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-10px,0) rotate(.4deg)}}@keyframes imageFloat{from{transform:rotate(5deg) translate3d(0,0,0)}to{transform:rotate(3deg) translate3d(-12px,-8px,0)}}
+@media(max-width:520px){.project-center-copy{left:20px;bottom:24px;font-size:34px}.project-ui{inset:18px;font-size:7px}.hero-art{opacity:.72}.hero-image{width:65%;right:-4%}.v-3d{width:58vw;height:58vw}.v-3d span{font-size:48vw}}
